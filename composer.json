@@ -10,5 +10,11 @@
 			"email": "aaron@zeek.com",
 			"homepage": "http://zeek.com"
 		}
-	]
+	],
+	"require": {
+		"php": ">=5.3"
+	},
+	"autoload": {
+		"files": ["utils.php"]
+	}
 }
