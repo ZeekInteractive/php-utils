@@ -65,3 +65,46 @@ function is_constant_true( $constant ) {
 
 	return true;
 }
+
+/**
+ * Load a file with a given filename and extension
+ *
+ * @param $filename
+ * @param $extension
+ *
+ * @return bool|string
+ * @throws \Exception
+ */
+function get_file( $filename, $extension ) {
+	if ( ! in_array( $extension, [ 'xml', 'sql', 'txt', 'json' ] ) ) {
+		throw new \Exception( 'Invalid file type requested' );
+	}
+
+	$filename = $filename . '.' . $extension;
+
+	// Can't open a file that doesn't exist
+	if ( ! $file_exists = file_exists( $filename ) ) {
+		return false;
+	}
+
+	$file_parts = pathinfo( $filename );
+
+	// Ensure it's a valid file with requested extension
+	if ( empty( $file_parts['extension'] ) ) {
+		return false;
+	} else if ( $extension !== $file_parts['extension'] ) {
+		return false;
+	}
+
+	$handle = fopen( $filename, 'r' );
+
+	if ( false === $handle ) {
+		return false;
+	}
+
+	// Finally, let's read our file
+	$contents = fread( $handle, filesize( $filename ) );
+	fclose( $handle );
+
+	return $contents;
+}
