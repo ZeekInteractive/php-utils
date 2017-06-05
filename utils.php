@@ -4,12 +4,13 @@ namespace Zeek\Util;
 
 /**
  * Reads an array safely for requested indice
+ *
  * Does not throw notices, instead simply returns an empty string if the value does not exist
  *
  * @param array $array
  * @param string $name
  *
- * @return string
+ * @return mixed
  */
 function safe_read( $array, $name ) {
 
