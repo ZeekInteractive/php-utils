@@ -1,13 +1,18 @@
 {
-	"name": "zeekinteractive/php-utils",
+	"name": "zeek/php-utils",
 	"description": "A collection of functions that provide utility functionality.",
 	"type": "library",
 	"license": "proprietary",
-	"authors": [
+	"authors": [    
 		{
 			"name": "Aaron Holbrook",
 			"email": "aaron@zeek.com",
-			"homepage": "http://zeek.com"
+			"homepage": "https://aaronjholbrook.com"
+		},
+		{
+			"name": "Zeek Interactive",
+			"email": "info@zeek.com",
+			"homepage": "https://zeek.com"
 		}
 	],
 	"require": {
