@@ -109,3 +109,28 @@ function get_file( $filename, $extension ) {
 
 	return $contents;
 }
+
+/**
+ * Recursively remove a directory
+ *
+ * @param $dir
+ * @return bool
+ */
+function rrmdir( $dir ) {
+
+	if ( ! file_exists( $dir ) ) {
+		return false;
+	}
+
+	foreach ( glob( $dir . '/*' ) as $file ) {
+		if ( is_dir( $file ) ) {
+			rrmdir( $file );
+		} else {
+			unlink( $file );
+		}
+	}
+
+	rmdir( $dir );
+
+	return true;
+}
