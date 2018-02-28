@@ -1,3 +1,3 @@
 # PHP Utils
 
-A collection of functions that provide utility functionality.
+Utility functions; useful for a variety of situations.
