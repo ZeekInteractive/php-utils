@@ -1,7 +1,6 @@
 {
 	"name": "zeekinteractive/php-utils",
 	"description": "A collection of functions that provide utility functionality.",
-	"version": "0.3.1",
 	"type": "library",
 	"license": "proprietary",
 	"authors": [
