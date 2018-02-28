@@ -1,6 +1,6 @@
 <?php
 
-namespace Zeek\Util;
+namespace Zeek\PHP_Util;
 
 /**
  * Reads an array safely for requested indice
@@ -19,31 +19,6 @@ function safe_read( $array, $name ) {
 	}
 
 	return $array[ $name ];
-}
-
-/**
- * Checks for and returns a term by the slug
- *
- * Initializes the term if it does not yet exist
- *
- * @param string $slug
- * @param string $taxonomy
- *
- * @return bool
- */
-function init_term( $slug, $taxonomy ) {
-
-	if ( ! function_exists( 'get_term_by' ) || ! function_exists( 'wp_insert_term' ) ) {
-		return false;
-	}
-
-	$term = get_term_by( 'slug', $slug, $taxonomy );
-
-	if ( ! empty( $term->ID ) ) {
-		return $term->ID;
-	}
-
-	return wp_insert_term( $slug, $taxonomy );
 }
 
 /**
