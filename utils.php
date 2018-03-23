@@ -14,6 +14,10 @@ namespace Zeek\PHP_Util;
  */
 function safe_read( $array, $name ) {
 
+	if ( is_object( $array ) ) {
+		return false;
+	}
+
 	if ( empty( $array[ $name ] ) ) {
 		return '';
 	}
