@@ -4,7 +4,7 @@ namespace Zeek\PHP_Util;
 
 use PHPUnit\Framework\TestCase;
 
-class UtilsTest extends TestCase {
+class SafeReadTest extends TestCase {
 
 	public function testSafeReadDefined() {
 
