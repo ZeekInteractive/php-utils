@@ -2,6 +2,12 @@
 
 namespace Zeek\PHP_Util;
 
+// backward compatibility
+if ( ! class_exists( '\PHPUnit\Framework\TestCase' ) &&
+     class_exists( '\PHPUnit_Framework_TestCase' ) ) {
+	class_alias( '\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase' );
+}
+
 class UtilsTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSafeReadDefined() {
@@ -24,16 +30,16 @@ class UtilsTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals( '', safe_read( $array_to_test, 'index2' ) );
 	}
-//
-//	/**
-//	 * @expectedException \Error
-//	 */
-//	public function testSafeReadDoesntHandleObjects() {
-//		$object_to_test = new \stdClass();
-//		$object_to_test->index1 = 'somevalue';
-//
-//		safe_read( $object_to_test, 'index1' );
-//	}
+	//
+	//	/**
+	//	 * @expectedException \Error
+	//	 */
+	//	public function testSafeReadDoesntHandleObjects() {
+	//		$object_to_test = new \stdClass();
+	//		$object_to_test->index1 = 'somevalue';
+	//
+	//		safe_read( $object_to_test, 'index1' );
+	//	}
 
 	public function testSafeReadHandlesNull() {
 		$this->assertEquals( '', safe_read( null, 'index1' ) );
