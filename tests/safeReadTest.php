@@ -29,7 +29,7 @@ class UtilsTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException \Error
 	 */
 	public function testSafeReadDoesntHandleObjects() {
-		$object_to_test = new stdClass();
+		$object_to_test = new \stdClass();
 		$object_to_test->index1 = 'somevalue';
 
 		safe_read( $object_to_test, 'index1' );
