@@ -2,9 +2,9 @@
 
 namespace Zeek\PHP_Util;
 
-use PHPUnit\Framework\TestCase;
+use Codeception\Test\Unit;
 
-class SafeReadTest extends TestCase {
+class SafeReadTest extends Unit {
 
 	public function testSafeReadDefined() {
 

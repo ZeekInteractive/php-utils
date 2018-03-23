@@ -2,9 +2,9 @@
 
 namespace Zeek\PHP_Util;
 
-use PHPUnit\Framework\TestCase;
+use Codeception\Test\Unit;
 
-class IsConstantTrueTest extends TestCase {
+class IsConstantTrueTest extends Unit {
 
 	public function testIsConstantTrueDefined() {
 

@@ -2,10 +2,10 @@
 
 namespace Zeek\PHP_Util;
 
+use Codeception\Test\Unit;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit\Framework\TestCase;
 
-class GetFileTest extends TestCase {
+class GetFileTest extends Unit {
 
 	/**
 	 * @var vfsStream
