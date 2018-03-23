@@ -27,16 +27,6 @@ class UtilsTest extends TestCase {
 		$this->assertEquals( '', safe_read( $array_to_test, 'index2' ) );
 	}
 
-		/**
-		 * @expectedException \Error
-		 */
-		public function testSafeReadDoesntHandleObjects() {
-			$object_to_test = new \stdClass();
-			$object_to_test->index1 = 'somevalue';
-
-			safe_read( $object_to_test, 'index1' );
-		}
-
 	public function testSafeReadHandlesNull() {
 		$this->assertEquals( '', safe_read( null, 'index1' ) );
 	}
