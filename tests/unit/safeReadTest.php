@@ -27,6 +27,13 @@ class SafeReadTest extends Unit {
 		$this->assertEquals( '', safe_read( $array_to_test, 'index2' ) );
 	}
 
+	public function testSafeReadHandlesObject() {
+		$object = new \stdClass();
+		$object->index1 = 'somevalue';
+
+		$this->assertEquals( false, safe_read( $object, 'index1' ) );
+	}
+
 	public function testSafeReadHandlesNull() {
 		$this->assertEquals( '', safe_read( null, 'index1' ) );
 	}
