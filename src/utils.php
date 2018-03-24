@@ -67,20 +67,7 @@ function get_file( $filename, $extension ) {
 		return false;
 	}
 
-	$file_parts = pathinfo( $filename );
-
-	// Ensure it's a valid file with requested extension
-	if ( empty( $file_parts['extension'] ) ) {
-		return false;
-	} else if ( $extension !== $file_parts['extension'] ) {
-		return false;
-	}
-
 	$handle = fopen( $filename, 'r' );
-
-	if ( false === $handle ) {
-		return false;
-	}
 
 	// Finally, let's read our file
 	$contents = fread( $handle, filesize( $filename ) );
