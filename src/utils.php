@@ -63,7 +63,7 @@ function get_file( $filename, $extension ) {
 	$filename = $filename . '.' . $extension;
 
 	// Can't open a file that doesn't exist
-	if ( ! $file_exists = file_exists( $filename ) ) {
+	if ( ! file_exists( $filename ) ) {
 		return false;
 	}
 
