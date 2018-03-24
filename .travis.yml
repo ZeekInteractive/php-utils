@@ -1,20 +1,13 @@
 language: php
 
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
 php:
-  - "7.2"
+    - "5.6"
+    - "7.0"
+    - "7.1"
+    - "7.2"
 
 install:
   - composer install --no-interaction
 
 script:
-  - ./vendor/bin/codecept run unit --coverage --coverage-xml
-
-after_script:
-  - cp tests/_output/coverage.xml tests/_output/clover.xml
-  - ls -la tests/_output
-  - ./cc-test-reporter after-build -p tests/_output -d --coverage-input-type clover --exit-code $TRAVIS_TEST_RESULT
+  - ./vendor/bin/codecept run
