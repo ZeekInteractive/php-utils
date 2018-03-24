@@ -19,27 +19,33 @@ class SafeReadTest extends Unit {
 		$this->assertEquals( 'somevalue', safe_read( $array_to_test, 'index1' ) );
 	}
 
-	public function testSafeReadReturnsEmptyStringOnInvalidKey() {
+	public function testSafeReadReturnsFalseOnInvalidKey() {
 		$array_to_test = [
 			'index1' => 'somevalue',
 		];
 
-		$this->assertEquals( '', safe_read( $array_to_test, 'index2' ) );
+		$this->assertEquals( false, safe_read( $array_to_test, 'index2' ) );
 	}
 
 	public function testSafeReadHandlesObject() {
 		$object = new \stdClass();
 		$object->index1 = 'somevalue';
 
-		$this->assertEquals( false, safe_read( $object, 'index1' ) );
+		$this->assertEquals( 'somevalue', safe_read( $object, 'index1' ) );
+	}
+
+	public function testSafeReadObjectInvalidKey() {
+		$object = new \stdClass();
+
+		$this->assertEquals( false, safe_read( $object, 'index2' ) );
 	}
 
 	public function testSafeReadHandlesNull() {
-		$this->assertEquals( '', safe_read( null, 'index1' ) );
+		$this->assertEquals( false, safe_read( null, 'index1' ) );
 	}
 
 	public function testSafeReadHandlesEmptyString() {
-		$this->assertEquals( '', safe_read( '', 'index1' ) );
+		$this->assertEquals( false, safe_read( '', 'index1' ) );
 	}
 
 }

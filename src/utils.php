@@ -3,26 +3,30 @@
 namespace Zeek\PHP_Util;
 
 /**
- * Reads an array safely for requested indice
+ * Reads an array or object safely for the requested key
  *
- * Does not throw notices, instead simply returns an empty string if the value does not exist
+ * Returns false if the value does not exist
  *
- * @param array $array
- * @param string $name
+ * @param array|object  $item
+ * @param string        $key
  *
  * @return mixed
  */
-function safe_read( $array, $name ) {
+function safe_read( $item, $key ) {
 
-	if ( is_object( $array ) ) {
+	if ( is_object( $item ) ) {
+		if ( isset( $item->$key ) ) {
+			return $item->$key;
+		}
+
 		return false;
 	}
 
-	if ( empty( $array[ $name ] ) ) {
-		return '';
+	if ( empty( $item[ $key ] ) ) {
+		return false;
 	}
 
-	return $array[ $name ];
+	return $item[ $key ];
 }
 
 /**
