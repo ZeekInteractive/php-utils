@@ -104,9 +104,10 @@ function rrmdir( $dir ) {
 	foreach ( glob( $dir . '/*' ) as $file ) {
 		if ( is_dir( $file ) ) {
 			rrmdir( $file );
-		} else {
-			unlink( $file );
+			continue;
 		}
+
+		unlink( $file );
 	}
 
 	rmdir( $dir );
