@@ -15,7 +15,4 @@ script:
   - ./vendor/bin/codecept run unit --coverage --coverage-xml
 
 after_script:
-  - mv tests/_output/coverage.xml clover.xml
-  - ls -la
-  - ls -la tests/_output
-  - ./cc-test-reporter after-build -p tests -d --coverage-input-type clover --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build -p tests/_output -d --coverage-input-type clover --exit-code $TRAVIS_TEST_RESULT
