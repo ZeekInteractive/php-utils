@@ -1,13 +1,23 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=752efe4e4b427a66677137b20610d072edea88b52d5552f998e2c33eaff52cbb
+
 language: php
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 php:
-    - "5.6"
-    - "7.0"
-    - "7.1"
-    - "7.2"
+  - "7.2"
 
 install:
   - composer install --no-interaction
 
 script:
-  - ./vendor/bin/codecept run
+  - ./vendor/bin/codecept run unit --coverage --coverage-xml
+
+after_script:
+  - mv tests/_output/coverage.xml clover.xml
+  - ./cc-test-reporter after-build --coverage-input-type clover --id 12345 --exit-code $TRAVIS_TEST_RESULT
