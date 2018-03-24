@@ -20,7 +20,8 @@ class GetFileTest extends Unit {
 			]
 		];
 
-		$this->file_system = vfsStream::setup( 'root', 444, $directory );
+		$vfs = new vfsStream();
+		$this->file_system = $vfs->setup( 'root', 444, $directory );
 	}
 
 	function testInvalidFileTypes() {
