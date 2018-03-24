@@ -10,16 +10,22 @@ class RecursiveRemoveDirectoryTest extends \Codeception\Test\Unit {
 	 */
 	protected $tester;
 
+	private $base_dir;
 	private $rrmdir;
 
 	private $test_file = 'file.txt';
 
 	protected function _before() {
-		$this->rrmdir = codecept_data_dir( 'rrmdir' );
-		$this->test_file = codecept_data_dir( 'rrmdir/file.txt' );
+		$this->base_dir = codecept_data_dir();
+
+		$this->rrmdir = $this->base_dir . 'rrmdir_test';
+		$this->test_file = $this->rrmdir . '/test/file.txt';
+
+		rrmdir( $this->rrmdir );
 
 		// Create directory
-		mkdir( $this->rrmdir, 0777, true );
+		mkdir( $this->rrmdir );
+		mkdir( $this->rrmdir . '/test' );
 
 		// Create file
 		fopen( $this->test_file, 'w' );
