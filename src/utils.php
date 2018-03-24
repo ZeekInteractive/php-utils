@@ -53,6 +53,12 @@ function is_constant_true( $constant ) {
 /**
  * Load a file with a given filename and extension
  *
+ * Acceptable extensions are:
+ *   - xml
+ *   - sql
+ *   - txt
+ *   - json
+ *
  * @param $filename
  * @param $extension
  *
