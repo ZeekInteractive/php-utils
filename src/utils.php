@@ -10,6 +10,7 @@ namespace Zeek\PHP_Util;
  * @param array|object  $item
  * @param string        $key
  *
+ *                          
  * @return mixed
  */
 function safe_read( $item, $key ) {
