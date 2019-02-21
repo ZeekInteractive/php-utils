@@ -3,6 +3,19 @@
 namespace Zeek\PHP_Util;
 
 /**
+ * Format the given value as currency.
+ *
+ * Formats the given value with two decimal places, prefixed with a dollar sign.
+ *
+ * @param mixed $value The value to format.
+ *
+ * @return string The formatted value.
+ */
+function format_currency( $value ) {
+	return '$' . number_format( floatval( $value ), 2 );
+}
+
+/**
  * Reads an array or object safely for the requested key
  *
  * Returns false if the value does not exist
