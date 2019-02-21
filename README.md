@@ -56,3 +56,12 @@ rrmdir( $dir )
 Recursively delete a directory and all files and directories inside it.
 
 This is useful because PHP's `rmdir` does not delete a directory if anything exists inside of it.
+
+### Format Currency
+
+Formats the given value with two decimal places, prefixed with a dollar sign.
+
+```php
+format_currency( 1.5 )
+// $1.50
+```
