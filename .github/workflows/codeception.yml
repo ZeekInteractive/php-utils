@@ -4,20 +4,22 @@ on: [push]
 
 jobs:
   build:
-
+    name: PHP ${{matrix.php}}
+    
     runs-on: ubuntu-latest
     
     strategy:
       matrix:
-        php-versions: ['5.6', '7.0', '7.1', '7.2', '7.3']
+        php: [5.6, 7.0, 7.1, 7.2, 7.3, nightly]
 
     steps:
     - uses: actions/checkout@v1
 
-    - name: Setup PHP Version
+    - name: Setup PHP
       uses: shivammathur/setup-php@master
       with:
-        php-version: ${{ matrix.php-versions }}
+        php-version: ${{ matrix.php }}
+        extension-csv: mbstring
 
     - name: Check PHP Version
       run: php -v
