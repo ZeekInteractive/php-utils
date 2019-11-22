@@ -1,6 +1,6 @@
 # PHP Utils 
 
-![](https://github.com/ZeekInteractive/php-utils/workflows/Codeception/badge.svg)
+![](https://github.com/ZeekInteractive/php-utils/workflows/Tests/badge.svg)
 
 ## Purpose
 Utility functions to help alleviate some common use cases.
