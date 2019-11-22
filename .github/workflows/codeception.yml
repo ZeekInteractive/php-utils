@@ -10,7 +10,7 @@ jobs:
     
     strategy:
       matrix:
-        php: [5.6, 7.0, 7.1, 7.2, 7.3, nightly]
+        php: [7.0, 7.1, 7.2, 7.3, nightly]
 
     steps:
     - uses: actions/checkout@v1
