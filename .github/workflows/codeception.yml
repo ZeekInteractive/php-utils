@@ -20,5 +20,8 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Show PHP version
+      run: php -v
+      
     - name: Run test suite
       run: vendor/bin/codecept run
