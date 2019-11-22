@@ -14,14 +14,29 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+    - name: Setup PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extension-csv: mbstring, intl #optional, setup extensions
+        ini-values-csv: post_max_size=256M, short_open_tag=On #optional, setup php.ini configuration
+        coverage: xdebug #optional, setup coverage driver
+        pecl: false #optional, setup PECL
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
-
-    - name: Show PHP version
+    - name: Check PHP Version
       run: php -v
+
+    - name: Check Composer Version
+      run: composer -V
+
+    - name: Check PHP Extensions
+      run: php -m
       
-    - name: Run test suite
-      run: vendor/bin/codecept run
+#    - name: Validate composer.json and composer.lock
+#      run: composer validate
+
+#    - name: Install dependencies
+#      run: composer install --prefer-dist --no-progress --no-suggest
+      
+ #   - name: Run test suite
+ #     run: vendor/bin/codecept run
