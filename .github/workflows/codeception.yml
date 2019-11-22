@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Codeception
 
 on: [push]
 
@@ -6,6 +6,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        php: [5.6, 7.0, 7.1, 7.2, 7.3]
 
     steps:
     - uses: actions/checkout@v1
@@ -16,8 +20,5 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
     - name: Run test suite
-      run: composer run-script codeception
+      run: vendor/bin/codecept run
