@@ -7,6 +7,8 @@ use Codeception\Test\Unit;
 class IsConstantTrueTest extends Unit {
 
 	public function testIsConstantTrueDefined() {
+		$test = ['hi'];
+		$test2 = $test['areyouthere'] ?? null;
 
 		$this->assertEquals( true, function_exists( 'Zeek\PHP_Util\is_constant_true' ) );
 	}
